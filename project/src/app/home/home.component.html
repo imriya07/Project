@@ -1,0 +1,64 @@
+<button type="button" class="btn btn-info btn-lg btn-block" data-toggle="modal" data-target="#myModal"
+  (click)="openModel()">Add</button>
+
+
+<div class="modal fade" id="myModal" [class.in]="isEdit" [style.display]="isEdit ? 'block' : 'none'" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body ">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" [(ngModel)]="userDetail.name" id="name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email address:</label>
+          <input type="email" class="form-control" [(ngModel)]="userDetail.email" id="email">
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender:</label>
+          <input type="text" class="form-control" [(ngModel)]="userDetail.gender" id="gender">
+        </div>
+        <div class="form-group">
+          <label for="contact">Contact:</label>
+          <input type="text" class="form-control" [(ngModel)]="userDetail.contact" id="contact">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" *ngIf="isAdd" (click)="add()">Add</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" *ngIf="!isAdd"
+          (click)="update()">update</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="close()">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<br>
+<br>
+
+<table class="table table-bordered">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Gender</th>
+    <th>Contact</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let resto of arr; index as i">
+    <td>{{i + 1}}</td>
+    <td>{{resto.name}}</td>
+    <td>{{resto.email}}</td>
+    <td>{{resto.gender}}</td>
+    <td>{{resto.contact}}</td>
+    <td><button class="btn btn-warning" (click)="edit(i)">Edit</button>
+      <button class="btn btn-danger" (click)="delete(i)">Delete</button>
+    </td>
+  </tr>
+</table>
