@@ -7,12 +7,7 @@ import { UserModal } from '../userDetails.model';
 })
 export class HomeComponent implements OnInit {
   arr: any[] = [
-    {
-      name: 'Riya',
-      gender: 'female',
-      email: 'riya@gmail.c',
-      contact: '12435656',
-    },
+   
   ];
   userDetail: UserModal = { name: '', gender: '', email: '', contact: '' };
   isEdit: boolean = false;
